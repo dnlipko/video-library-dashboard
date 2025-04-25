@@ -1,0 +1,9 @@
+{
+  "name": "video-library-dashboard",
+  "version": "1.0.0",
+  "description": "VEED Full-Stack Engineering Challenge: Video Library Dashboard",
+  "main": "index.js",
+  "repository": "https://github.com/dnlipko/video-library-dashboard.git",
+  "author": "dmitrii.lipko@gmail.com",
+  "license": "MIT"
+}
