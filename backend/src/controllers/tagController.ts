@@ -14,7 +14,7 @@ export const getTags = async (_req: Request, res: Response) => {
   try {
     const tags = await prisma.tag.findMany();
     
-    res.json({ data: tags });
+    res.json(tags);
   } catch (error) {
     if (error instanceof z.ZodError) {
       res.status(400).json({ error: 'Invalid query parameters', details: error.errors });
