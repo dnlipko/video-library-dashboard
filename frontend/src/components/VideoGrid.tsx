@@ -1,8 +1,9 @@
 import { Video } from '../types/video';
 import { VideoCard } from './VideoCard';
 import { LoadingSkeleton } from './LoadingSkeleton';
+import { ErrorMessage } from './ErrorMessage';
+import { EmptyState } from './EmptyState';
 import { useEffect, useRef, useCallback } from 'react';
-import { HiXCircle, HiDocument } from 'react-icons/hi';
 
 interface VideoGridProps {
   videos: Video[];
@@ -50,18 +51,7 @@ export const VideoGrid = ({
   }, [handleObserver]);
 
   if (error) {
-    return (
-      <div className="rounded-md bg-red-50 p-4">
-        <div className="flex">
-          <div className="flex-shrink-0">
-            <HiXCircle className="h-5 w-5 text-red-400" />
-          </div>
-          <div className="ml-3">
-            <h3 className="text-sm font-medium text-red-800">{error}</h3>
-          </div>
-        </div>
-      </div>
-    );
+    return <ErrorMessage error={error} />;
   }
 
   if (isLoading && videos.length === 0) {
@@ -77,17 +67,7 @@ export const VideoGrid = ({
   if (videos.length === 0) {
     return (
       <div className="grid gap-4 pb-4 grid-cols-[repeat(auto-fill,minmax(15rem,1fr))]">
-        <div className="col-span-full bg-white rounded-md shadow p-8">
-          <div className="text-center">
-            <HiDocument
-              className="mx-auto h-12 w-12 text-gray-400"
-            />
-            <h3 className="mt-2 text-sm font-medium text-gray-900">No videos found</h3>
-            <p className="mt-1 text-sm text-gray-500">
-              Try adjusting your search or filter criteria
-            </p>
-          </div>
-        </div>
+        <EmptyState />
       </div>
     );
   }

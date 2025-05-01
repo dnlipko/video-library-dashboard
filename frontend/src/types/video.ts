@@ -20,7 +20,7 @@ export interface VideoFilters {
     end: string | null;
   };
   tags: string[];
-  sortBy: 'newest' | 'oldest' | 'alphabetical';
+  sortBy: 'newest' | 'oldest' | 'alphabetical' | 'alphabetical-reverse';
 }
 
 export interface VideoState {

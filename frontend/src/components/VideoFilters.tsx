@@ -17,9 +17,7 @@ export const VideoFilters = ({ filters, onFiltersChange, clearFilters, tags, act
   };
 
   const handleSortChange = (sortBy: SortOption) => {
-    const mappedSortBy: VideoFiltersType['sortBy'] = 
-      sortBy === 'alphabetical-reverse' ? 'alphabetical' : sortBy;
-    onFiltersChange({ ...filters, sortBy: mappedSortBy });
+    onFiltersChange({ ...filters, sortBy });
   };
 
   const handleFiltersChange = (callback: (filters: VideoFiltersType) => VideoFiltersType) => {

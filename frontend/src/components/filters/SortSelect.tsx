@@ -14,7 +14,7 @@ export const SortSelect: React.FC<SortSelectProps> = ({ value, onChange }) => {
       <select
         value={value}
         onChange={(e) => onChange(e.target.value as SortOption)}
-        className="pl-4 pr-10 h-full py-2 bg-white border border-gray-200 rounded-md text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none"
+        className="pl-4 pr-10 w-full h-full py-2 bg-white border border-gray-200 rounded-md text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none"
       >
         <option value="newest">Newest First</option>
         <option value="oldest">Oldest First</option>
