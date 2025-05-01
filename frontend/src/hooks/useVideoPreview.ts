@@ -13,7 +13,6 @@ export function useVideoPreview(videos: Video[]) {
     navigate('');
   }, [navigate]);
 
-  // Handle hash changes and initial hash after videos are loaded
   useEffect(() => {
     const hash = location.hash;
 

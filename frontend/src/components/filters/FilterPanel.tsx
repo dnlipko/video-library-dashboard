@@ -57,13 +57,11 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
 
   return createPortal(
     <>
-      {/* Backdrop */}
       <div 
         className="fixed inset-0 bg-black bg-opacity-50 transition-opacity z-40"
         onClick={onClose}
       />
       
-      {/* Sidebar */}
       <div
         ref={panelRef}
         className="fixed top-0 right-0 h-full w-full md:w-96 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50"
@@ -83,7 +81,6 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
             </button>
           </div>
 
-          {/* Content */}
           <div className="flex-1 overflow-y-auto p-4 space-y-6">
               <DateRangeFilter
                 value={dateRange}
@@ -97,7 +94,6 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
               />
           </div>
 
-          {/* Footer with Clear Filters button */}
           <div className="p-4 border-t border-gray-200">
             <button
               onClick={() => {
