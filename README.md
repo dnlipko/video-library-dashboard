@@ -64,10 +64,10 @@ npm run db:seed
 
 4. Start the development servers:
 ```bash
-# Start backend server (from backend directory)
+cd backend
 npm run dev
 
-# Start frontend server (from frontend directory)
+cd ../frontend
 npm run dev
 ```
 
@@ -75,39 +75,32 @@ The application will be available at:
 - Frontend: http://localhost:3000
 - Backend: http://localhost:4000
 
-## 📚 API Documentation
+## 🐳 Docker Setup
 
-### Endpoints
+### Prerequisites
+- Docker
+- Docker Compose
 
-#### GET /api/videos
-Query parameters:
-- `page`: Page number (default: 1)
-- `limit`: Items per page (default: 12)
-- `search`: Search term for video titles
-- `startDate`: Filter videos created after this date
-- `endDate`: Filter videos created before this date
-- `tags`: Comma-separated list of tags to filter by
-- `sort`: Sort field (created_at, title)
-- `order`: Sort order (asc, desc)
+### Running with Docker
 
-#### GET /api/videos/:id
-Returns detailed information about a specific video.
+1. Build and start the containers:
+```bash
+docker-compose -f docker-compose.dev.yml up --build
+```
 
-## 🎯 Implementation Notes
+This will:
+- Build the frontend and backend containers
+- Set up the SQLite database
+- Run database migrations
+- Seed the database with initial data
+- Start both frontend and backend services
 
-### Prioritized Features
-1. Core video grid display with pagination
-2. Search and filter functionality
-3. Video details modal
-4. Responsive design
-5. Error handling and loading states
+The application will be available at:
+- Frontend: http://localhost:5173
+- Backend: http://localhost:4000
 
-### Known Limitations
-- Limited to 12 videos per page for optimal performance
-- Search is case-sensitive
-- Date range filter requires both start and end dates
 
-## 💭 Developer's Note to Interviewer
+## 💭 Developer's Note
 
 In implementing this project, I focused on delivering a robust and user-friendly video library dashboard. Here's my approach and priorities:
 
@@ -143,50 +136,8 @@ While I prioritized core functionality and user experience, there are areas I wo
    - Implement integration tests for API endpoints
    - Add end-to-end testing for key user flows
 
-3. **Performance Optimizations**
-   - Implement caching strategies
-   - Add query optimization for database operations
-   - Implement virtual scrolling for large video lists
 
 I'm looking forward to discussing these choices and potential improvements during our conversation!
-
-## 🧪 Testing
-
-Run the test suite:
-```bash
-# Backend tests
-cd backend
-npm test
-
-# Frontend tests
-cd frontend
-npm test
-```
-
-## 🐳 Docker Setup
-
-### Prerequisites
-- Docker
-- Docker Compose
-
-### Running with Docker
-
-1. Build and start the containers:
-```bash
-docker-compose -f docker-compose.dev.yml up --build
-```
-
-This will:
-- Build the frontend and backend containers
-- Set up the SQLite database
-- Run database migrations
-- Seed the database with initial data
-- Start both frontend and backend services
-
-The application will be available at:
-- Frontend: http://localhost:5173
-- Backend: http://localhost:4000
-
 
 ## 📝 Project Structure
 
