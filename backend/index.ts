@@ -7,27 +7,22 @@ import tagRoutes from './src/routes/tags';
 
 const app = express();
 
-// Middleware setup
 app.use(express.json());        // parse JSON request bodies
 app.use(cors());               // enable CORS for all origins by default (configurable)
 app.use(requestLogger);
 
-// Health check endpoint
 app.get('/api/health', (_req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Routes
 app.use('/api/videos', videoRoutes);
 app.use('/api/tags', tagRoutes);
 
-// Error handling
 app.use(errorLogger);
 app.use((_err: Error, _req: Request, res: Response, _next: NextFunction) => {
   res.status(500).json({ error: 'Internal Server Error' });
 });
 
-// Start the server
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
