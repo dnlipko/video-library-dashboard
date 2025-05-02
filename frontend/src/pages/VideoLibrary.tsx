@@ -23,18 +23,7 @@ export function VideoLibrary() {
   const { selectedVideo, handleCloseModal } = useVideoPreview(videos);
 
   return (
-    <div className="min-h-screen">
-      <header className="border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
-              <h1 className="text-xl font-semibold text-gray-900">Video Library</h1>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <main className="px-4 sm:px-6 lg:px-8 py-8 max-w-7xl mx-auto">
+    <>
         <div className="mb-6">
           <VideoFiltersComponent
             filters={filters}
@@ -57,7 +46,6 @@ export function VideoLibrary() {
           video={selectedVideo}
           onClose={handleCloseModal}
         />
-      </main>
-    </div>
+    </>
   );
 } 

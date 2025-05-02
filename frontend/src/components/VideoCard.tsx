@@ -10,7 +10,7 @@ export const VideoCard = ({ video }: VideoCardProps) => {
   return (
     <Link 
       to={`#video-${video.id}`}
-      className="group bg-white h-full flex flex-col rounded-md"
+      className="group h-full flex flex-col rounded-md"
       aria-label={`Open video: ${video.title}`}
     >
       <div className="relative aspect-video group-hover:shadow-lg transition-shadow bg-gray-100 flex-shrink-0 rounded-md overflow-hidden">

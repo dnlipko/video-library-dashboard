@@ -6,7 +6,7 @@ interface ErrorMessageProps {
 
 export const ErrorMessage = ({ error }: ErrorMessageProps) => {
   return (
-    <div className="col-span-full bg-white rounded-lg p-12">
+    <div className="col-span-full p-12">
       <div className="text-center">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 mb-4">
           <HiXCircle className="h-8 w-8 text-red-400" />

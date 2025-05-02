@@ -12,6 +12,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.74.9",
     "@types/react-select": "^5.0.1",
+    "@video-library/shared-types": "file:../shared",
     "axios": "^1.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

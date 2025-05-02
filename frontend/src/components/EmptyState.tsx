@@ -2,7 +2,7 @@ import { HiFilm } from 'react-icons/hi';
 
 export const EmptyState = () => {
   return (
-    <div className="col-span-full bg-white rounded-lg p-12">
+    <div className="col-span-full p-12">
       <div className="text-center">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-50 mb-4">
           <HiFilm className="h-8 w-8 text-gray-400" />

@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
+import { Video, PaginatedResponse, VideoWhereClause, VideoOrderBy } from '@video-library/shared-types';
 import prisma from '../../prisma/client';
 
-// Validation schema
 export const videoQuerySchema = z.object({
   page: z.string().optional().transform((val: string | undefined) => parseInt(val || '1')),
   limit: z.string().optional().transform((val: string | undefined) => parseInt(val || '10')),
@@ -16,11 +16,9 @@ export const videoQuerySchema = z.object({
 
 export const getVideos = async (req: Request, res: Response) => {
   try {
-    // Validate and parse query parameters
     const query = videoQuerySchema.parse(req.query);
     
-    // Build where clause for filtering
-    const where: any = {};
+    const where: VideoWhereClause = {};
     
     if (query.search) {
       where.title = {
@@ -42,21 +40,19 @@ export const getVideos = async (req: Request, res: Response) => {
       where.tags = {
         some: {
           name: {
-            in: query.tags.map(tag => tag.toLowerCase())
+            in: query.tags.map((tag: string) => tag.toLowerCase())
           }
         }
       };
     }
     
-    // Build orderBy clause for sorting
-    const orderBy: any = {};
+    const orderBy: VideoOrderBy = {};
     if (query.sortBy) {
       orderBy[query.sortBy] = query.sortOrder || 'desc';
     } else {
-      orderBy.created_at = 'desc'; // Default sort by newest
+      orderBy.created_at = 'desc';    
     }
     
-    // Execute query with pagination
     const [videos, total] = await Promise.all([
       prisma.video.findMany({
         where,
@@ -70,12 +66,7 @@ export const getVideos = async (req: Request, res: Response) => {
       prisma.video.count({ where })
     ]);
     
-    // Log the query parameters and results for debugging
-    console.log('Query parameters:', query);
-    console.log('Where clause:', where);
-    console.log('Found videos:', videos.length);
-    
-    res.json({
+    const response: PaginatedResponse<Video[]> = {
       data: videos,
       pagination: {
         total,
@@ -83,7 +74,9 @@ export const getVideos = async (req: Request, res: Response) => {
         limit: query.limit,
         totalPages: Math.ceil(total / query.limit)
       }
-    });
+    };
+    
+    res.json(response);
   } catch (error) {
     if (error instanceof z.ZodError) {
       res.status(400).json({ error: 'Invalid query parameters', details: error.errors });

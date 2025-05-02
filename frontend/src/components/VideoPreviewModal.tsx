@@ -11,10 +11,10 @@ interface VideoPreviewModalProps {
 export const VideoPreviewModal = ({ video, onClose }: VideoPreviewModalProps) => {
   return (
     <Modal onClose={onClose} isOpen={!!video}>
-      <div className="bg-white rounded-lg overflow-hidden relative group">
+      <div className="rounded-lg overflow-hidden relative group">
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 bg-gray-50 rounded-full p-[6px] flex z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+          className="absolute top-2 right-2 bg-gray-50 rounded-full p-[6px] flex z-10 transition-opacity duration-200"
           aria-label="Close modal"
         >
           <XMarkIcon className="h-5 w-5 text-gray-600" />
