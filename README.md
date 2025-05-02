@@ -41,7 +41,7 @@ A full-stack application for browsing and managing a video library, built with R
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/video-library-dashboard.git
+git clone https://github.com/dnlipko/video-library-dashboard.git
 cd video-library-dashboard
 ```
 
