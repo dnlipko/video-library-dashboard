@@ -1,8 +1,7 @@
 {
   "name": "video-library-backend",
   "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
+  "main": "index.ts",
   "license": "MIT",
   "scripts": {
     "start": "node dist/index.js",
@@ -16,7 +15,6 @@
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",
-    "@video-library/shared-types": "file:../shared",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "sqlite3": "^5.1.7",
@@ -33,6 +31,7 @@
     "nodemon": "^3.0.1",
     "prisma": "^6.6.0",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   }
 }

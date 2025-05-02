@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
-import { Video, PaginatedResponse, VideoWhereClause, VideoOrderBy } from '@video-library/shared-types';
 import prisma from '../../prisma/client';
 
 export const videoQuerySchema = z.object({
@@ -18,7 +17,7 @@ export const getVideos = async (req: Request, res: Response) => {
   try {
     const query = videoQuerySchema.parse(req.query);
     
-    const where: VideoWhereClause = {};
+    const where: any = {};
     
     if (query.search) {
       where.title = {
@@ -46,7 +45,7 @@ export const getVideos = async (req: Request, res: Response) => {
       };
     }
     
-    const orderBy: VideoOrderBy = {};
+    const orderBy: any = {};
     if (query.sortBy) {
       orderBy[query.sortBy] = query.sortOrder || 'desc';
     } else {
@@ -66,7 +65,7 @@ export const getVideos = async (req: Request, res: Response) => {
       prisma.video.count({ where })
     ]);
     
-    const response: PaginatedResponse<Video[]> = {
+    const response = {
       data: videos,
       pagination: {
         total,
